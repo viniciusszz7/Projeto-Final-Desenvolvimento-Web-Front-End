@@ -1,2 +1,8 @@
 # Projeto-Final-Desenvolvimento-Web-Front-End
-Desenvolvimento de uma Aplicação Web Interativa e Responsiva
+Objetivo do projeto:
+
+Descrição das funcionalidades:
+
+Tecnologias utilizadas:
+
+Instruções para execução do projeto:
