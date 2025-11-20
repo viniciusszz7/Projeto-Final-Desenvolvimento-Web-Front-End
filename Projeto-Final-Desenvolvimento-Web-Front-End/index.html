@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VivaFit Academia — Saúde, Força e Bem‑estar</title>
+  <meta name="description" content="Site de academia com calculadoras de IMC, gasto calórico e gerador de plano de treino." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-wrap">
+      <a class="logo" href="#home">VivaFit</a>
+      <nav aria-label="Menu principal">
+        <ul class="menu">
+          <li><a href="#home">Início</a></li>
+          <li><a href="#calculadoras">Calculadoras</a></li>
+          <li><a href="#treinos">Planos de treino</a></li>
+          <li><a href="#midia">Mídia</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+      <button class="menu-toggle" aria-label="Abrir/fechar menu" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero" role="banner">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <h1>Construa o melhor de você</h1>
+          <p>Alimente sua disciplina com dados: calcule seu IMC, estime seu gasto calórico e receba um plano de treino sob medida.</p>
+          <a class="btn btn-primary" href="#calculadoras">Começar agora</a>
+        </div>
+        <figure class="hero-media">
+          <img src="imagens/Captura de tela 2025-11-19 152845.png" alt="Pessoa treinando em academia" />
+          <figcaption>Performance nasce do hábito.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="calculadoras" class="section">
+      <div class="container">
+        <h2>Calculadoras de saúde</h2>
+        <p>Preencha os dados e obtenha resultados instantâneos. Validação básica evita erros comuns.</p>
+
+        <div class="calc-grid">
+          <article class="card" aria-labelledby="titulo-imc">
+            <h3 id="titulo-imc">IMC (Índice de Massa Corporal)</h3>
+            <form id="form-imc" novalidate>
+              <div class="form-row">
+                <label for="imc-peso">Peso (kg)</label>
+                <input type="number" id="imc-peso" name="peso" min="20" max="400" step="0.1" required placeholder="Ex.: 72.5" />
+                <small class="error" data-error-for="imc-peso"></small>
+              </div>
+              <div class="form-row">
+                <label for="imc-altura">Altura (cm)</label>
+                <input type="number" id="imc-altura" name="altura" min="100" max="230" step="0.1" required placeholder="Ex.: 175" />
+                <small class="error" data-error-for="imc-altura"></small>
+              </div>
+              <button type="submit" class="btn btn-secondary">Calcular IMC</button>
+            </form>
+            <div class="resultado" id="resultado-imc" aria-live="polite"></div>
+          </article>
+
+          <article class="card" aria-labelledby="titulo-gasto">
+            <h3 id="titulo-gasto">Gasto calórico diário</h3>
+            <form id="form-gasto" novalidate>
+              <div class="form-row">
+                <label for="g-sexo">Sexo</label>
+                <select id="g-sexo" name="sexo" required>
+                  <option value="">Selecione</option>
+                  <option value="M">Masculino</option>
+                  <option value="F">Feminino</option>
+                </select>
+                <small class="error" data-error-for="g-sexo"></small>
+              </div>
+              <div class="form-row grid-2">
+                <div>
+                  <label for="g-peso">Peso (kg)</label>
+                  <input type="number" id="g-peso" name="peso" min="30" max="300" step="0.1" required />
+                  <small class="error" data-error-for="g-peso"></small>
+                </div>
+                <div>
+                  <label for="g-altura">Altura (cm)</label>
+                  <input type="number" id="g-altura" name="altura" min="130" max="230" step="0.1" required />
+                  <small class="error" data-error-for="g-altura"></small>
+                </div>
+              </div>
+              <div class="form-row">
+                <label for="g-idade">Idade (anos)</label>
+                <input type="number" id="g-idade" name="idade" min="12" max="100" required />
+                <small class="error" data-error-for="g-idade"></small>
+              </div>
+              <div class="form-row">
+                <label for="g-atividade">Nível de atividade</label>
+                <select id="g-atividade" name="atividade" required>
+                  <option value="">Selecione</option>
+                  <option value="1.2">Sedentário (pouco ou nenhum exercício)</option>
+                  <option value="1.375">Leve (1-3 dias/semana)</option>
+                  <option value="1.55">Moderado (3-5 dias/semana)</option>
+                  <option value="1.725">Intenso (6-7 dias/semana)</option>
+                  <option value="1.9">Muito intenso (trabalho físico + treino)</option>
+                </select>
+                <small class="error" data-error-for="g-atividade"></small>
+              </div>
+              <details class="met-extra">
+                <summary>Calorias do treino (opcional)</summary>
+                <div class="form-row">
+                  <label for="g-atividade-treino">Atividade do treino</label>
+                  <select id="g-atividade-treino" name="atividadeTreino">
+                    <option value="">Selecione</option>
+                    <option value="musculacao">Musculação</option>
+                    <option value="corrida">Corrida (8 km/h)</option>
+                    <option value="bike">Bike ergométrica</option>
+                    <option value="hiit">HIIT</option>
+                  </select>
+                </div>
+                <div class="form-row grid-2">
+                  <div>
+                    <label for="g-duracao">Duração (min)</label>
+                    <input type="number" id="g-duracao" name="duracao" min="10" max="180" />
+                  </div>
+                  <div>
+                    <label for="g-intensidade">Intensidade</label>
+                    <select id="g-intensidade" name="intensidade">
+                      <option value="leve">Leve</option>
+                      <option value="moderada" selected>Moderada</option>
+                      <option value="intensa">Intensa</option>
+                    </select>
+                  </div>
+                </div>
+              </details>
+              <button type="submit" class="btn btn-secondary">Estimar gasto</button>
+            </form>
+            <div class="resultado" id="resultado-gasto" aria-live="polite"></div>
+          </article>
+          <article class="card" aria-labelledby="titulo-treino">
+            <h3 id="titulo-treino">Plano de treino sob medida</h3>
+            <form id="form-treino" novalidate>
+              <div class="form-row">
+                <label for="t-objetivo">Objetivo</label>
+                <select id="t-objetivo" name="objetivo" required>
+                  <option value="">Selecione</option>
+                  <option value="hipertrofia">Hipertrofia</option>
+                  <option value="emagrecimento">Emagrecimento</option>
+                  <option value="resistencia">Resistência</option>
+                  <option value="saude">Saúde geral</option>
+                </select>
+                <small class="error" data-error-for="t-objetivo"></small>
+              </div>
+              <div class="form-row">
+                <label for="t-nivel">Nível</label>
+                <select id="t-nivel" name="nivel" required>
+                  <option value="">Selecione</option>
+                  <option value="iniciante">Iniciante</option>
+                  <option value="intermediario">Intermediário</option>
+                  <option value="avancado">Avançado</option>
+                </select>
+                <small class="error" data-error-for="t-nivel"></small>
+              </div>
+              <div class="form-row">
+                <label for="t-dias">Dias por semana</label>
+                <input type="number" id="t-dias" name="dias" min="2" max="6" required />
+                <small class="error" data-error-for="t-dias"></small>
+              </div>
+              <div class="form-row">
+                <label for="t-equip">Equipamentos disponíveis</label>
+                <select id="t-equip" name="equip" required>
+                  <option value="">Selecione</option>
+                  <option value="completa">Academia completa</option>
+                  <option value="basica">Halteres e elásticos</option>
+                  <option value="corpo">Peso do corpo</option>
+                </select>
+                <small class="error" data-error-for="t-equip"></small>
+              </div>
+              <button type="submit" class="btn btn-secondary">Gerar plano</button>
+            </form>
+            <div class="resultado" id="resultado-treino" aria-live="polite"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="treinos" class="section alt-bg">
+      <div class="container">
+        <h2>Biblioteca de exercícios</h2>
+        <p>Adicione e remova exercícios para montar sua lista pessoal.</p>
+
+        <div class="grid-2-columns">
+          <div class="card">
+            <h3>Adicionar exercício</h3>
+            <form id="form-exercicio" novalidate>
+              <div class="form-row">
+                <label for="ex-nome">Nome do exercício</label>
+                <input type="text" id="ex-nome" name="nome" required placeholder="Ex.: Supino reto" />
+                <small class="error" data-error-for="ex-nome"></small>
+              </div>
+              <div class="form-row grid-3">
+                <div>
+                  <label for="ex-series">Séries</label>
+                  <input type="number" id="ex-series" name="series" min="1" max="10" required />
+                  <small class="error" data-error-for="ex-series"></small>
+                </div>
+                <div>
+                  <label for="ex-reps">Repetições</label>
+                  <input type="number" id="ex-reps" name="reps" min="1" max="30" required />
+                  <small class="error" data-error-for="ex-reps"></small>
+                </div>
+                <div>
+                  <label for="ex-descanso">Descanso (s)</label>
+                  <input type="number" id="ex-descanso" name="descanso" min="15" max="240" required />
+                  <small class="error" data-error-for="ex-descanso"></small>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-secondary">Adicionar</button>
+            </form>
+          </div>
+          <div class="card">
+            <h3>Minha lista</h3>
+            <ul id="lista-exercicios" class="lista-exercicios" aria-live="polite"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="midia" class="section">
+      <div class="container">
+        <h2>Mídia e conteúdos</h2>
+        <div class="media-grid">
+          <figure class="card">
+            <img src="imagens/Captura de tela 2025-11-19 153006.png" width="450" height="240" alt="Halteres em academia" />
+            <figcaption>Equipamentos que contam a história do seu esforço.</figcaption>
+          </figure>
+          <article class="card">
+            <h3>Vídeo: Por que a ATIVIDADE FÍSICA faz bem à saúde?</h3>
+            <iframe width="450" height="240" src="https://www.youtube.com/embed/98aKpjFwd4s?si=Ve0inHmlpDaOD9s4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </article>
+          
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="section alt-bg">
+      <div class="container">
+        <h2>Contato</h2>
+        <form id="form-contato" class="card" novalidate>
+          <div class="form-row grid-2">
+            <div>
+              <label for="c-nome">Nome</label>
+              <input type="text" id="c-nome" name="nome" required />
+              <small class="error" data-error-for="c-nome"></small>
+            </div>
+            <div>
+              <label for="c-email">Email</label>
+              <input type="email" id="c-email" name="email" required />
+              <small class="error" data-error-for="c-email"></small>
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="c-mensagem">Mensagem</label>
+            <textarea id="c-mensagem" name="mensagem" rows="4" minlength="10" required></textarea>
+            <small class="error" data-error-for="c-mensagem"></small>
+          </div>
+          <div class="form-row">
+            <label>
+              <input type="checkbox" id="c-termos" name="termos" required />
+              Aceito os termos de uso
+            </label>
+            <small class="error" data-error-for="c-termos"></small>
+          </div>
+          <button type="submit" class="btn btn-primary">Enviar</button>
+          <div class="resultado" id="resultado-contato" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>VivaFit Academia</strong>
+        <p>Brasília, DF — Treine com propósito.</p>
+      </div>
+      <nav aria-label="Links do rodapé">
+        <ul class="footer-links">
+          <li><a href="#calculadoras">Calculadoras</a></li>
+          <li><a href="#treinos">Planos de treino</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+      <small>&copy; 2025 VivaFit. Todos os direitos reservados.</small>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
